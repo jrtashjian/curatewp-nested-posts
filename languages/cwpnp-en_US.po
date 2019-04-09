@@ -7,7 +7,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-04-09T01:05:44+00:00\n"
+"POT-Creation-Date: 2019-04-09T01:17:50+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Language: \n"
 "X-Generator: WP-CLI 2.1.0\n"
@@ -31,6 +31,11 @@ msgstr ""
 
 #. Author URI of the plugin
 msgid "https://jrtashjian.com"
+msgstr ""
+
+#. Translators: this message outputs a minimum PHP requirement.
+#: curatewp-nested-posts.php:53
+msgid "Your version of PHP (%s) is below the minimum version of PHP required by CurateWP - Nested Posts (5.6). Please contact your host and request that your version be upgraded to 5.6 or later."
 msgstr ""
 
 #: includes/Widget.php:31
@@ -88,9 +93,4 @@ msgstr ""
 
 #: includes/Core.php:182
 msgid "CurateWP"
-msgstr ""
-
-#. Translators: this message outputs a minimum PHP requirement.
-#: curatewp-related-posts.php:53
-msgid "Your version of PHP (%s) is below the minimum version of PHP required by CurateWP - Nested Posts (5.6). Please contact your host and request that your version be upgraded to 5.6 or later."
 msgstr ""
