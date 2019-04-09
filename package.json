@@ -1,0 +1,27 @@
+{
+    "private": true,
+    "scripts": {
+        "watch": "cross-env webpack --watch",
+        "build": "cross-env NODE_ENV=production webpack",
+        "i18n": "npm run i18n-pot && npm run i18n-json && npm run i18n-mo",
+        "i18n-pot": "wp i18n make-pot ./ ./languages/cwpnp.pot --headers='{\"Last-Translator\":\"JR Tashjian <jr@curatewp.com>\",\"Language-Team\":\"CurateWP <info@curatewp.com>\"}' && cp ./languages/cwpnp.pot ./languages/cwpnp-en_US.po",
+        "i18n-json": "wp i18n make-json languages/",
+        "i18n-mo": "for file in `find . -name \"*.po\"` ; do msgfmt -o ${file/.po/.mo} $file ; done"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.4.0",
+        "@babel/preset-env": "^7.4.2",
+        "@babel/preset-react": "^7.0.0",
+        "babel-loader": "^8.0.5",
+        "cross-env": "^5.2.0",
+        "css-loader": "^2.1.1",
+        "mini-css-extract-plugin": "^0.5.0",
+        "node-sass": "^4.11.0",
+        "sass-loader": "^7.1.0",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.3.0"
+    },
+    "dependencies": {
+        "build": "^0.1.4"
+    }
+}

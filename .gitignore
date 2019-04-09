@@ -1,0 +1,5 @@
+.vscode/
+.cache/
+.DS_Store
+node_modules/
+assets/dist/layouts.build.js
