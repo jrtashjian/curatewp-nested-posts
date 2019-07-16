@@ -54,14 +54,12 @@ function curatewp_nested_posts( $args = array() ) {
 
 		$posts_query = new \WP_Query( $query_args );
 
-		if ( ! $posts_query->have_posts() ) {
-			return '';
-		}
-
 		$nested_posts = array_merge(
 			$nested_posts,
 			wp_list_pluck( $posts_query->posts, 'ID' )
 		);
+
+		wp_reset_postdata();
 
 		/**
 		 * Filters the nested post ids for the section.
@@ -90,7 +88,14 @@ function curatewp_nested_posts( $args = array() ) {
 	$classes[] = 'curatewp-section-' . $section_id;
 	$classes[] = 'curatewp-section-nested-posts';
 
-	wp_reset_postdata();
+	if ( empty( $nested_posts ) ) {
+		return sprintf(
+			'<div class="%1$s">%2$s</div>',
+			esc_attr( join( ' ', array_filter( $classes ) ) ),
+			__( 'No posts to show.' )
+		);
+	}
+
 	ob_start();
 	?>
 
