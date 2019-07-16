@@ -4,7 +4,7 @@
 Plugin Name: CurateWP - Nested Posts
 Plugin URI: https://curatewp.com/
 Description: Display child posts within the current post, in a widget, and in your theme.
-Version: 1.0.0
+Version: 1.0.1
 Author: JR Tashjian
 Author URI: https://jrtashjian.com
 Text Domain: cwpnp
@@ -31,7 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CWPNP_VERSION', '1.0.0' );
+define( 'CWPNP_VERSION', '1.0.1' );
 define( 'CWPNP_PLUGIN_DIR', dirname( __FILE__ ) );
 define( 'CWPNP_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
