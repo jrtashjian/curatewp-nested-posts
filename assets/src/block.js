@@ -4,6 +4,7 @@ const { registerBlockType } = wp.blocks;
 const {
     ServerSideRender, PanelBody, ExternalLink,
     RangeControl, ToggleControl, SelectControl,
+    Disabled,
 } = wp.components;
 const { withSelect } = wp.data;
 const { InspectorControls, RichText } = wp.editor;
@@ -133,10 +134,12 @@ registerBlockType('curatewp/nested-posts', {
                         onChange={(description) => setAttributes({ description: description.replace(/<br>/gi, ' ') })} />
                 }
 
-                <ServerSideRender
-                    block="curatewp/nested-posts"
-                    attributes={{ number, orderby, order }}
-                    urlQueryArgs={{ post_id }} />
+                <Disabled>
+                    <ServerSideRender
+                        block="curatewp/nested-posts"
+                        attributes={{ number, orderby, order }}
+                        urlQueryArgs={{ post_id }} />
+                </Disabled>
 
             </div>
         );
