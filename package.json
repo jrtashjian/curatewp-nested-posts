@@ -1,10 +1,11 @@
 {
     "private": true,
     "scripts": {
-        "build": "wp-scripts build",
+        "build": "wp-scripts build && node-sass ./src/layouts.scss --output build --output-style compressed",
         "start": "wp-scripts start"
     },
     "devDependencies": {
-        "@wordpress/scripts": "5.0.1"
+        "@wordpress/scripts": "5.0.1",
+        "node-sass": "^4.12.0"
     }
 }

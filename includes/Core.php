@@ -107,7 +107,7 @@ class Core {
 		if ( $load_layout_css ) {
 			wp_enqueue_style(
 				'cwpnp-layouts',
-				CWPNP_PLUGIN_URL . 'assets/dist/layouts.build.css',
+				CWPNP_PLUGIN_URL . 'build/layouts.css',
 				array(),
 				CWPNP_VERSION
 			);
