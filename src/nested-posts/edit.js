@@ -3,23 +3,64 @@
  */
 import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
-import { withSelect } from '@wordpress/data';
+import { withSelect, dispatch } from '@wordpress/data';
 import {
 	ServerSideRender,
 	PanelBody,
 	RangeControl,
 	SelectControl,
 	Disabled,
+	Button,
 } from '@wordpress/components';
+import { createBlock } from '@wordpress/blocks';
 import { InspectorControls } from '@wordpress/editor';
+import { Warning } from '@wordpress/block-editor';
 
 class NestedPostsEdit extends Component {
+	constructor() {
+		super( ...arguments );
+
+		this.deprecateSectionDetails = this.deprecateSectionDetails.bind( this );
+		this.convertSectionDetails = this.convertSectionDetails.bind( this );
+	}
+
+	deprecateSectionDetails() {
+		this.props.setAttributes( {
+			title: null,
+			description: null,
+		} );
+	}
+
+	convertSectionDetails() {
+		const { getBlockIndex, clientId, attributes } = this.props;
+		const { title, description } = attributes;
+
+		const blockIndex = getBlockIndex( clientId );
+
+		dispatch( 'core/editor' ).insertBlocks( [
+			createBlock( 'core/heading', { level: 3, content: title } ),
+			createBlock( 'core/paragraph', { content: description } ),
+		], blockIndex, undefined, false );
+
+		this.deprecateSectionDetails();
+	}
+
     render() {
-        const { attributes, setAttributes, postID } = this.props;
+        const { attributes, setAttributes, isSelected, postID } = this.props;
         const { number, orderby, order } = attributes;
 
 		return (
 			<div>
+				{ isSelected && attributes.title &&
+					<Warning
+						actions={ [ <Button isPrimary onClick={this.deprecateSectionDetails}>Remove</Button> ] }
+						secondaryActions={ [ {
+							title: __( 'Convert to Blocks', 'cwpnp' ),
+							onClick: this.convertSectionDetails,
+						} ] }>
+						{ __( 'Section title and description has been deprecated.', 'cwpnp' ) }
+					</Warning>
+				}
 				<InspectorControls>
 					<PanelBody initialOpen={ true }>
 						<RangeControl
@@ -83,6 +124,11 @@ class NestedPostsEdit extends Component {
     };
 }
 
-export default withSelect( select => ( {
-    postID: select( 'core/editor' ).getCurrentPostId(),
-} ) )( NestedPostsEdit );
+export default withSelect( select => {
+	const { getCurrentPostId, getBlockIndex } = select( 'core/editor' );
+
+	return {
+		postID: getCurrentPostId(),
+		getBlockIndex,
+	};
+} )( NestedPostsEdit );
