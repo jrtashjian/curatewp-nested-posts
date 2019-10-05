@@ -500,13 +500,14 @@ function (_Component) {
           order = attributes.order;
       return Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])("div", null, isSelected && attributes.title && Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_13__["Warning"], {
         actions: [Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["Button"], {
-          isPrimary: true,
+          isDefault: true,
+          isLarge: true,
           onClick: this.deprecateSectionDetails
-        }, "Remove")],
-        secondaryActions: [{
-          title: Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Convert to Blocks', 'cwpnp'),
+        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Remove', 'cwpnp')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["Button"], {
+          isPrimary: true,
+          isLarge: true,
           onClick: this.convertSectionDetails
-        }]
+        }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Convert to Blocks', 'cwpnp'))]
       }, Object(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_8__["__"])('Section title and description has been deprecated.', 'cwpnp')), Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_editor__WEBPACK_IMPORTED_MODULE_12__["InspectorControls"], null, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["PanelBody"], {
         initialOpen: true
       }, Object(_wordpress_element__WEBPACK_IMPORTED_MODULE_7__["createElement"])(_wordpress_components__WEBPACK_IMPORTED_MODULE_10__["RangeControl"], {

@@ -53,11 +53,10 @@ class NestedPostsEdit extends Component {
 			<div>
 				{ isSelected && attributes.title &&
 					<Warning
-						actions={ [ <Button isPrimary onClick={this.deprecateSectionDetails}>Remove</Button> ] }
-						secondaryActions={ [ {
-							title: __( 'Convert to Blocks', 'cwpnp' ),
-							onClick: this.convertSectionDetails,
-						} ] }>
+						actions={ [
+							<Button isDefault isLarge onClick={ this.deprecateSectionDetails }>{ __( 'Remove', 'cwpnp' ) }</Button>,
+							<Button isPrimary isLarge onClick={ this.convertSectionDetails }>{ __( 'Convert to Blocks', 'cwpnp' ) }</Button>,
+						] }>
 						{ __( 'Section title and description has been deprecated.', 'cwpnp' ) }
 					</Warning>
 				}
