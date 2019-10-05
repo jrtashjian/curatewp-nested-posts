@@ -126,33 +126,26 @@ class Core {
 			return;
 		}
 
-		wp_register_style(
-			'cwpnp-block',
-			CWPNP_PLUGIN_URL . 'assets/dist/block.build.css',
-			array(),
-			CWPNP_VERSION
-		);
+		$asset_file = include CWPNP_PLUGIN_DIR . '/build/index.asset.php';
 
 		wp_register_script(
 			'cwpnp-block',
-			CWPNP_PLUGIN_URL . 'assets/dist/block.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-components', 'wp-data', 'wp-editor', 'wp-element' ),
-			CWPNP_VERSION,
-			true // Enqueue script in the footer.
+			CWPNP_PLUGIN_URL . 'build/index.js',
+			$asset_file['dependencies'],
+			$asset_file['version'],
 		);
 
 		register_block_type(
 			'curatewp/nested-posts',
 			array(
 				'editor_script'   => 'cwpnp-block',
-				'editor_style'    => 'cwpnp-block',
 				'attributes'      => array(
 					'className'   => array( 'type' => 'string' ),
 					'title'       => array( 'type' => 'string' ),
 					'description' => array( 'type' => 'string' ),
-					'number'      => array( 'type' => 'integer' ),
-					'orderby'     => array( 'type' => 'string' ),
-					'order'       => array( 'type' => 'string' ),
+					'number'      => array( 'type' => 'integer', 'default' => 5 ),
+					'orderby'     => array( 'type' => 'string', 'default' => 'menu_order' ),
+					'order'       => array( 'type' => 'string', 'default' => '' ),
 				),
 				'render_callback' => array( get_called_class(), 'render_block_nested_posts' ),
 			)
