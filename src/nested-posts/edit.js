@@ -5,16 +5,18 @@ import { __ } from '@wordpress/i18n';
 import { Component } from '@wordpress/element';
 import { withSelect } from '@wordpress/data';
 import {
-	ServerSideRender, PanelBody,
-	RangeControl, SelectControl,
+	ServerSideRender,
+	PanelBody,
+	RangeControl,
+	SelectControl,
 	Disabled,
 } from '@wordpress/components';
-import { InspectorControls, RichText } from '@wordpress/editor';
+import { InspectorControls } from '@wordpress/editor';
 
 class NestedPostsEdit extends Component {
     render() {
-        const { attributes, setAttributes, isSelected, postID } = this.props;
-        const { number, orderby, order, title, description } = attributes;
+        const { attributes, setAttributes, postID } = this.props;
+        const { number, orderby, order } = attributes;
 
 		return (
 			<div>
@@ -69,32 +71,10 @@ class NestedPostsEdit extends Component {
 					</PanelBody>
 				</InspectorControls>
 
-				{ ( title || isSelected ) &&
-				<RichText
-					tagName="h3"
-					className="curatewp-section-header__title"
-					placeholder={ __( 'Title for section', 'cwpnp' ) }
-					value={ title }
-					formattingControls={ [] }
-					multiline={ false }
-					onChange={ ( title ) => setAttributes( { title: title.replace( /<br>/gi, ' ' ) } ) } />
-				}
-
-				{ ( description || isSelected ) &&
-				<RichText
-					tagName="p"
-					className="curatewp-section-header__description"
-					placeholder={ __( 'Description for section...', 'cwpnp' ) }
-					value={ description }
-					formattingControls={ [] }
-					multiline={ false }
-					onChange={ ( description ) => setAttributes( { description: description.replace( /<br>/gi, ' ' ) } ) } />
-				}
-
 				<Disabled>
 					<ServerSideRender
 						block="curatewp/nested-posts"
-						attributes={ { number, orderby, order } }
+						attributes={ attributes }
 						urlQueryArgs={ { postID } } />
 				</Disabled>
 
