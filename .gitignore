@@ -8,6 +8,3 @@ build/
 release/
 wordpress/
 vendor/
-vendor/composer/installed.json
-!vendor/composer
-!vendor/autoload.php
