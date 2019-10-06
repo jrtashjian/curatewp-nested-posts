@@ -1,8 +1,10 @@
 {
     "private": true,
     "scripts": {
-        "build": "wp-scripts build && node-sass ./src/layouts.scss --output build --output-style compressed",
-        "start": "wp-scripts start",
+        "build": "wp-scripts build && npm run scripts",
+        "start": "npm run scripts && wp-scripts start & npm run scripts:watch",
+        "scripts": "node-sass ./src/layouts.scss --output build --output-style compressed",
+        "scripts:watch": "npm run scripts -- --watch",
         "env": "wp-scripts env"
     },
     "devDependencies": {
