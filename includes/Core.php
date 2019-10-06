@@ -133,7 +133,7 @@ class Core {
 			CWPNP_PLUGIN_URL . 'build/index.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
-			true
+			true // Enqueue script in the footer.
 		);
 
 		register_block_type(
