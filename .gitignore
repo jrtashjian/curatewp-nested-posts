@@ -7,3 +7,7 @@ build/
 !build/index.php
 release/
 wordpress/
+vendor/
+vendor/composer/installed.json
+!vendor/composer
+!vendor/autoload.php
