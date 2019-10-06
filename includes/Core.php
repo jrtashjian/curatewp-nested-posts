@@ -133,6 +133,7 @@ class Core {
 			CWPNP_PLUGIN_URL . 'build/index.js',
 			$asset_file['dependencies'],
 			$asset_file['version'],
+			true
 		);
 
 		register_block_type(
@@ -143,9 +144,18 @@ class Core {
 					'className'   => array( 'type' => 'string' ),
 					'title'       => array( 'type' => 'string' ),
 					'description' => array( 'type' => 'string' ),
-					'number'      => array( 'type' => 'integer', 'default' => 5 ),
-					'orderby'     => array( 'type' => 'string', 'default' => 'menu_order' ),
-					'order'       => array( 'type' => 'string', 'default' => '' ),
+					'number'      => array(
+						'type'    => 'integer',
+						'default' => 5,
+					),
+					'orderby'     => array(
+						'type'    => 'string',
+						'default' => 'menu_order',
+					),
+					'order'       => array(
+						'type'    => 'string',
+						'default' => '',
+					),
 				),
 				'render_callback' => array( get_called_class(), 'render_block_nested_posts' ),
 			)
